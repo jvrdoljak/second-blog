@@ -5,13 +5,11 @@
   </head>
   <body>
     @include('partials._navbar')
-    
-    @yield('navbar')
 
     <div class="container">
-      <div class="row">
-        <h1>Dobrodošli na web stranicu frizerskog salona</h1>
-      </div>
+      
+      @yield('content')
+      
     </div>
     
     @include('partials._scripts')
