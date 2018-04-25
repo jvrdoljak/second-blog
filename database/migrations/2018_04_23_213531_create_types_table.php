@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTermTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateTermTable extends Migration
      */
     public function up()
     {
-        Schema::create('term', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description', 200)->nullable();
-            $table->timestamp('start_time')->nullable();
-            $table->timestamp('end_time')->nullable();
-            $table->integer('created_by'); // created by user (id)
-            $table->rememberToken();
+            $table->string('title', 50);
+            $table->decimal('duration', 8, 2);
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateTermTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('term');
+        Schema::dropIfExists('type_updated_by');
     }
 }

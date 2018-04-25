@@ -14,10 +14,13 @@ class CreateTermUpdatedByTable extends Migration
     public function up()
     {
         Schema::create('term_updated_by', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->integer('term_id');
-            $table->timestamp('at_time');
+            $table->integer('user_id')->unsigned();
+            $table->integer('term_id')->unsigned();
             $table->timestamps();
+        });
+        Schema::table('term_updated_by', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('term_id')->references('id')->on('terms');
         });
     }
 

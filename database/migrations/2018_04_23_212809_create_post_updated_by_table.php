@@ -14,10 +14,13 @@ class CreatePostUpdatedByTable extends Migration
     public function up()
     {
         Schema::create('post_updated_by', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->integer('post_id');
-            $table->timestamp('at_time');
+            $table->integer('user_id')->unsigned();
+            $table->integer('post_id')->unsigned();
             $table->timestamps();
+        });
+        Schema::table('post_updated_by', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 
