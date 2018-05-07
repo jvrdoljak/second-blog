@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     @include('partials._head')
+    <title>Salon @yield('title')</title>
   </head>
   <body>
     @include('partials._navbar')
