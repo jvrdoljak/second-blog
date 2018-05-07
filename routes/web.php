@@ -13,3 +13,4 @@
 Route::get('/', function(){
     return view('pages.homepage');
 });
+Route::resource('posts', 'PostController');
