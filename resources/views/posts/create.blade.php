@@ -5,9 +5,19 @@
 @section('content')
 
 <div class="row">
-    {!! Form::open(['url' => 'foo/bar']) !!}
-    
-    {!! Form::close() !!}
+    <div class="col-md-8 offset-md-2">
+        <h1 align="center">Create new post!</h1>
+        <hr>    
+        {!! Form::open(array('route' => 'posts.store')) !!}
+            {{ Form::label('title', 'Title:') }}
+            {{ Form::text('title', null, array( 'class' => 'form-control')) }}
+
+            {{ Form::label('body', 'Body:') }}
+            {{ Form::textarea('body', null, array( 'class' => 'form-control' )) }}
+
+            {{ Form::submit('Create post', array( 'class' => 'form-control btn btn-block btn-danger mt-2')) }}
+        {!! Form::close() !!}
+    </div>
 </div>
 
 
