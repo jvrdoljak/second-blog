@@ -18,7 +18,7 @@ class CreateTermsTable extends Migration
             $table->string('description', 200)->nullable();
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
-            $table->integer('created_by')->unsigned(); // created by user (id)
+            $table->integer('created_by')->unsigned()->nullable(); // created by user (id)
             $table->timestamps();
         });
         Schema::table('terms', function (Blueprint $table) {

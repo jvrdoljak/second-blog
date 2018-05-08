@@ -15,7 +15,7 @@
             {{ Form::label('body', 'Body:') }}
             {{ Form::textarea('body', null, array( 'class' => 'form-control' )) }}
 
-            {{ Form::submit('Create post', array( 'class' => 'form-control btn btn-block btn-danger mt-2')) }}
+            {{ Form::submit('Create post', array( 'class' => 'form-control btn btn-block btn-success mt-2')) }}
         {!! Form::close() !!}
     </div>
 </div>
