@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Session;
 
 class PostController extends Controller
 {
@@ -76,7 +77,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        return view('posts.edit')->withPost($post->id);
+        return view('posts.edit')->withPost($post);
     }
 
     /**
@@ -88,7 +89,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'title' => 'required|max:80',
+            'body' => 'required'
+        ));
+     
+        $post = Post::find($id);
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+
+        $post->save();
+
+        Session::flash('success', 'Post was successfully saved');
+
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**

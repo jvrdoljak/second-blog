@@ -31,7 +31,7 @@
                         <td>{{ substr($post->body, 0, 40)}}{{ strlen($post->body) > 40 ? '...' : '' }}</td>
                         <td>{{ date('d M Y H:i:s', strtotime($post->created_at)) }}</td>
                         <td>{{ date('d M Y H:i:s', strtotime($post->updated_at)) }}</td>
-                        <td><a href="#" class="btn btn-block btn-outline-secondary">Edit</a></td>
+                        <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-block btn-outline-secondary">Edit</a></td>
                     </tr>
                 @endforeach
 
