@@ -12,7 +12,7 @@
         <a class="nav-link" href="/posts">Posts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="/terms">Terms</a>
       </li>      
     </ul>
 

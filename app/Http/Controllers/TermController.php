@@ -18,7 +18,11 @@ class TermController extends Controller
      */
     public function index()
     {
-        //
+        $terms = Term::all();
+
+        
+
+        return view('terms.index')->withTerms($terms);
     }
 
     /**

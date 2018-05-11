@@ -15,5 +15,4 @@ Route::get('/', function(){
 });
 Route::resource('posts', 'PostController');
 Route::resource('terms', 'TermController');
-Route::get('terms/create', 'TypeController@index');
 Route::resource('types', 'TypeController');
