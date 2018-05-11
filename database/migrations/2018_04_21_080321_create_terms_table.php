@@ -17,15 +17,19 @@ class CreateTermsTable extends Migration
             $table->increments('id');
             $table->string('description', 200)->nullable();
             $table->timestamp('start_time')->nullable();
-            $table->timestamp('end_time')->nullable();
             $table->integer('created_by')->unsigned()->nullable(); // created by user (id)
+            $table->integer('term_type')->unsigned();
             $table->timestamps();
         });
+
         Schema::table('terms', function (Blueprint $table) {
             $table->foreign('created_by')->references('id')->on('users');
         });
-    }
 
+        Schema::table('terms', function (Blueprint $table) {
+            $table->foreign('term_type')->references('id')->on('types');
+        });
+    }
     /**
      * Reverse the migrations.
      *
