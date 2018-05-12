@@ -20,11 +20,8 @@ class TermController extends Controller
     {
         $terms = Term::all();
 
-        
-
-        return view('terms.index')->withTerms($terms);
+        return view('terms.index')->with('terms',$terms);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -51,9 +48,9 @@ class TermController extends Controller
 
         $term = new Term;
 
-        $term->description = $request->description;
-        $term->start_time = $request->start_time;
-        $term->term_type = $request->term_type;
+        $term->description  = $request->description;
+        $term->start_time   = $request->start_time;
+        $term->term_type    = $request->term_type;
 
         $term->save();
 
@@ -66,9 +63,11 @@ class TermController extends Controller
      * @param  \App\Term  $term
      * @return \Illuminate\Http\Response
      */
-    public function show(Term $term)
+    public function show($id)
     {
-        //
+        $term = Term::find($id);
+
+        return view('terms.show')->with('term',$term);
     }
 
     /**
