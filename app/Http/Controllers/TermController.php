@@ -29,7 +29,9 @@ class TermController extends Controller
      */
     public function create()
     {
-        return view('terms.create');
+        $types = Type::all();
+
+        return view('terms.create')->with('types', $types);
     }
 
     /**
@@ -76,9 +78,11 @@ class TermController extends Controller
      * @param  \App\Term  $term
      * @return \Illuminate\Http\Response
      */
-    public function edit(Term $term)
+    public function edit($id)
     {
-        //
+        $term = Term::find($id);
+
+        return view('terms.edit')->with('term',$term);
     }
 
     /**
@@ -88,9 +92,23 @@ class TermController extends Controller
      * @param  \App\Term  $term
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Term $term)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'description'   => 'required|max:200',
+            'start_time'    => 'required',
+            'term_type'     => 'required'
+        ));
+
+        $term = Term::find($id);
+
+        $term->description  = $request->description;
+        $term->start_time   = $request->start_time;
+        $term->term_type    = $request->term_type;
+
+        $term->save();
+
+        return redirect()->route('terms.show', $term->id);
     }
 
     /**

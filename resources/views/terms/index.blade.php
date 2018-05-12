@@ -31,6 +31,7 @@
                 <td> {{ $term->description }} </td>
                 <td> {{ $term->start_time }} </td>
                 <td> {{ $term->types->duration }} {{ $term->types->duration > 1 ? 'mins' : 'min' }} </td>
+                <td> <a href=" {{ route('terms.edit', $term->id) }} " class="btn btn-outline-secondary">Edit</a> </td>
             </tr>
             @endforeach
         </tbody>
