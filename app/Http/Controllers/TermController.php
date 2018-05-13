@@ -62,7 +62,7 @@ class TermController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Term  $term
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,21 +75,23 @@ class TermController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Term  $term
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $term = Term::find($id);
-
-        return view('terms.edit')->with('term',$term);
+        $data = array(
+            'term'  => Term::find($id),
+            'types' => Type::all()
+        );
+        return view('terms.edit')->with('data',$data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Term  $term
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -108,17 +110,21 @@ class TermController extends Controller
 
         $term->save();
 
-        return redirect()->route('terms.show', $term->id);
+        return redirect()->route('terms.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Term  $term
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Term $term)
+    public function destroy($id)
     {
-        //
+        $term = Term::find($id);
+
+        $term->delete();
+        
+        return redirect()->route('terms.index');
     }
 }

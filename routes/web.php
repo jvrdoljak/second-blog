@@ -14,5 +14,5 @@ Route::get('/', function(){
     return view('pages.homepage');
 });
 Route::resource('posts', 'PostController');
-Route::resource('terms', 'TermController');
+Route::resource('terms', 'TermController' );
 Route::resource('types', 'TypeController');

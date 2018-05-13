@@ -3,11 +3,16 @@
 @section('title', '| Show term')
 
 @section('content')
-
-    <p><b>Description:</b> {{ $term->description }} </p>
+    <div class="row mt-2">
+        <a href=" {{ route('terms.edit', $term->id) }} " class="btn btn-secondary mr-2">Edit</a>
+        {!! Form::open(array('route' => array('terms.destroy', $term->id), 'method' => 'DELETE'))  !!}
+            {{ Form::submit('Delete', array('class' => 'form-control btn btn-danger mr-2')) }}
+        {!! Form::close() !!}
+    </div>
     <hr>
-    <p><b>Start time:</b> {{ $term->start_time }} </p>
-    <hr>
-    <p><b>Duration:</b> {{ $term->types->duration }} {{ $term->types->duration > 1 ? 'mins' : 'min' }} </p>
-
+    <div class="jubmotron bg-light col-md-4">
+        <p><b>Description:</b> {{ $term->description }} </p>
+        <p><b>Start time:</b> {{ $term->start_time }} </p>
+        <p><b>Duration:</b> {{ $term->types->duration }} {{ $term->types->duration > 1 ? 'mins' : 'min' }} </p>
+    </div>
 @endsection

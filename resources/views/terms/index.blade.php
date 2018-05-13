@@ -22,16 +22,20 @@
             <th>Start time</th>
             <th>Duration</th>
             <th> </th>
+            <th> </th>
         </thead>
         <tbody>
             @foreach($terms as $term)
             <tr>
                 <td> {{ $term->id }} </td>
-                <td> {{ $term->types->title }} </td>
+                <td> <a href=" {{ route('terms.show', $term->id) }} ">{{ $term->types->title }}</a> </td>
                 <td> {{ $term->description }} </td>
                 <td> {{ $term->start_time }} </td>
                 <td> {{ $term->types->duration }} {{ $term->types->duration > 1 ? 'mins' : 'min' }} </td>
-                <td> <a href=" {{ route('terms.edit', $term->id) }} " class="btn btn-outline-secondary">Edit</a> </td>
+                <td> <a href=" {{ route('terms.edit', $term->id) }} " class="btn btn-block btn-outline-secondary mr-2">Edit</a> </td>
+                <td> {!! Form::open(array('route' => array('terms.destroy', $term->id), 'method' => 'DELETE'))  !!}
+                        {{ Form::submit('Delete', array('class' => 'btn btn-block btn-outline-danger mr-2')) }}
+                     {!! Form::close() !!} </td>
             </tr>
             @endforeach
         </tbody>
