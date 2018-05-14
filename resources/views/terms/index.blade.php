@@ -30,7 +30,7 @@
                 <td> {{ $term->id }} </td>
                 <td> <a href=" {{ route('terms.show', $term->id) }} ">{{ $term->types->title }}</a> </td>
                 <td> {{ $term->description }} </td>
-                <td> {{ $term->start_time }} </td>
+                <td> {{ date('d M Y H:i:s', strtotime($term->start_time)) }} </td>
                 <td> {{ $term->types->duration }} {{ $term->types->duration > 1 ? 'mins' : 'min' }} </td>
                 <td> <a href=" {{ route('terms.edit', $term->id) }} " class="btn btn-block btn-outline-secondary mr-2">Edit</a> </td>
                 <td> {!! Form::open(array('route' => array('terms.destroy', $term->id), 'method' => 'DELETE'))  !!}
@@ -40,6 +40,10 @@
             @endforeach
         </tbody>
     </table>
+    <div align="center">
+        {!! $terms->links() !!}
+    </div>
 </div>
+
 
 @endsection

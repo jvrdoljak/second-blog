@@ -20,6 +20,7 @@
                 @endforeach
             </select>    
             {{ Form::submit('Save changes', array('class' => 'form-control btn btn-block btn-success mt-2')) }}
+            <a href=" {{ route('terms.index') }} " class="btn btn-block btn-danger mt-2">Cancel</a>
         {!! Form::close() !!}
     </div>
 </div>

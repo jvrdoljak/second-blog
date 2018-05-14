@@ -18,7 +18,7 @@ class TermController extends Controller
      */
     public function index()
     {
-        $terms = Term::all();
+        $terms = Term::orderBy('start_time')->paginate(10);
 
         return view('terms.index')->with('terms',$terms);
     }

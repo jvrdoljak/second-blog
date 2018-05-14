@@ -7,16 +7,10 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/posts">Posts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/terms">Terms</a>
-      </li>      
+      </li>     
     </ul>
 
-    <a href="#" class="btn btn-danger">Prijavi se</a>
+    <a href="#" class="btn btn-danger">Login</a>
 
   </div>
 </nav>
